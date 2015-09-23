@@ -1,3 +1,3 @@
 module.exports = {
-  Ticker:    require('./lib/ticker.js')
+  Timepiece:    require('./lib/Timepiece.js')
 };
