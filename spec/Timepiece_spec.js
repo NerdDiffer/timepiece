@@ -1,30 +1,30 @@
 var assert = require('assert');
 
-var Ticker = require('../').Ticker;
+var Timepiece = require('../').Timepiece;
 
-describe('Ticker', function() {
+describe('Timepiece', function() {
 
   describe('inheriting prototype methods from EventEmitter', function() {
-    var t = new Ticker();
+    var t = new Timepiece();
     var EventEmitter = require('events').EventEmitter;
 
     describe('constructors', function() {
-      it('constructor of the child object is Ticker', function() {
-        assert.equal(t.constructor, Ticker);
+      it('constructor of the child object is Timepiece', function() {
+        assert.equal(t.constructor, Timepiece);
       });
 
-      it('super-constructor of Ticker is the EventEmitter', function() {
+      it('super-constructor of Timepiece is the EventEmitter', function() {
         assert.equal(t.constructor.super_, EventEmitter);
       });
     });
 
     describe('prototypes', function() {
 
-      it('prototype of a Ticker object is the prototype of Ticker', function() {
-        assert.equal(Object.getPrototypeOf(t), Ticker.prototype);
+      it('prototype of a Timepiece object is the prototype of Timepiece', function() {
+        assert.equal(Object.getPrototypeOf(t), Timepiece.prototype);
       });
 
-      it('prototype of the prototype of a Ticker object is the prototype of EventEmitter', function() {
+      it('prototype of the prototype of a Timepiece object is the prototype of EventEmitter', function() {
         assert.equal(
           Object.getPrototypeOf(Object.getPrototypeOf(t)),
           EventEmitter.prototype

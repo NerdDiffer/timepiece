@@ -1,4 +1,4 @@
 module.exports = {
-  Ticker:    require('./lib/ticker.js'),
-  Metronome: require('./lib/metronome.js')
+  Metronome: require('./lib/metronome.js'),
+  Timepiece: require('./lib/Timepiece.js')
 };
