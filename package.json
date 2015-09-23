@@ -23,5 +23,11 @@
   "bugs": {
     "url": "https://github.com/NerdDiffer/timepiece/issues"
   },
-  "homepage": "https://github.com/NerdDiffer/timepiece#readme"
+  "homepage": "https://github.com/NerdDiffer/timepiece#readme",
+  "dependencies": {
+    "inherits": "^2.0.1"
+  },
+  "devDependencies": {
+    "mocha": "^2.3.3"
+  }
 }
