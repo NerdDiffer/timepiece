@@ -1,0 +1,27 @@
+{
+  "name": "timepiece",
+  "version": "0.0.0",
+  "description": "a clock, countdown timer, interval timer, stopwatch and metronome",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha ./spec/**/*.js"
+  },
+  "keywords": [
+    "clock",
+    "countdown",
+    "interval",
+    "timer",
+    "stopwatch",
+    "metronome"
+  ],
+  "author": "Rafael Espinoza <rafael@rafaelespinoza.com> (http://www.rafaelespinoza.com)",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/NerdDiffer/timepiece.git"
+  },
+  "bugs": {
+    "url": "https://github.com/NerdDiffer/timepiece/issues"
+  },
+  "homepage": "https://github.com/NerdDiffer/timepiece#readme"
+}
