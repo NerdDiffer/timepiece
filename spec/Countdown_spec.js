@@ -1,6 +1,7 @@
 var assert = require('assert');
 
 var Countdown = require('../').Countdown;
+var shared = require('./shared/Countdown_shared.js');
 
 describe('Countdown', function() {
   describe('initial settings', function() {
@@ -59,27 +60,7 @@ describe('Countdown', function() {
 
   describe('#stop', function() {
     var c = new Countdown();
-
-    context('when timer is already running', function() {
-      before('setup: start the timer', function() {
-        c.start();
-      });
-      it('stops the countdown', function() {
-        c.stop();
-        assert(!c.isActive());
-      });
-      it('remembers where it started from', function() {
-        c.stop();
-        assert.equal(c.from, 60);
-      });
-    });
-    context('when timer is not running', function() {
-      it.skip('does nothing', function() {
-        // TODO: is this worth testing?
-        // how do I test that nothing happens? with spies?
-        // should I emit an event if its passed over?
-      });
-    });
+    shared.behaviorForStop(c, 'stop');
   });
 
   describe('#set', function() {
@@ -139,6 +120,8 @@ describe('Countdown', function() {
 
   describe('#pause', function() {
     // is an alias for `#stop`, provides same behavior
+    var c = new Countdown();
+    shared.behaviorForStop(c, 'pause');
   });
 
   describe('#resume', function() {

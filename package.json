@@ -4,7 +4,7 @@
   "description": "a clock, countdown timer, interval timer, stopwatch and metronome",
   "main": "index.js",
   "scripts": {
-    "test": "mocha ./spec/**/*.js"
+    "test": "mocha ./spec/**/*_spec.js"
   },
   "keywords": [
     "clock",
