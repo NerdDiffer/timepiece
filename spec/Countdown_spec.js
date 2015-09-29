@@ -11,6 +11,12 @@ describe('Countdown', function() {
       it('is set to countdown from 60 seconds', function() {
         assert.equal(c.from, 60);
       });
+      it('has same amount of time remaining as "from" property', function() {
+        assert.equal(c.remaining, c.from);
+      });
+      it('is not running', function() {
+        assert(!c.isActive());
+      });
     });
     context('custom settings less than 1 minute', function() {
       var c = new Countdown(30);
@@ -18,12 +24,18 @@ describe('Countdown', function() {
       it('can start countdown at 30 seconds', function() {
         assert.equal(c.from, 30);
       });
+      it('has same amount of time remaining as "from" property', function() {
+        assert.equal(c.remaining, c.from);
+      });
     });
     context('custom settings more than 1 minute', function() {
       var c = new Countdown(1800);
 
       it('can start countdown at 30 minutes', function() {
         assert.equal(c.from, 1800);
+      });
+      it('has same amount of time remaining as "from" property', function() {
+        assert.equal(c.remaining, c.from);
       });
     });
   });
@@ -128,7 +140,7 @@ describe('Countdown', function() {
     // is an alias for `#start`, provides same behavior
   });
 
-  describe('a scenario', function() {
+  describe('scenario: counting down from 5', function() {
     var c = new Countdown();
     // Artificially set time between assertions.
     // This is to emulate a simple scenario.
@@ -141,7 +153,13 @@ describe('Countdown', function() {
       c.start();
     });
 
-    context('starting at 5 seconds', function() {
+    context('during the countdown', function() {
+      it('is active', function() {
+        assert(c.isActive());
+      });
+      it('has 5 seconds left at the start', function() {
+        assert.equal(c.remaining, 5);
+      });
       it('has 4 seconds left after 1 second', function(done) {
         setTimeout(function() {
           assert.equal(c.remaining, 4);
@@ -170,6 +188,9 @@ describe('Countdown', function() {
           done();
         }, msForTesting);
       });
+    });
+
+    context('the countdown runs out', function() {
       it('emits a finish event with 0 seconds remaining', function(done) {
         var isFinished = false;
         c.once('finish', function() {
@@ -181,21 +202,14 @@ describe('Countdown', function() {
           done();
         }, msForTesting);
       });
-      it('remembers where it started from', function(done) {
-        setTimeout(function() {
-          assert.equal(c.from, 5);
-          done();
-        }, msForTesting);
+      it('is not active', function() {
+        assert(!c.isActive());
       });
-    });
-
-    context('stopping countdown', function() {
-      it('deletes the ticker property from the countdown', function(done) {
-        setTimeout(function() {
-          c.stop();
-          assert(!c.hasOwnProperty('ticker'));
-          done();
-        }, msForTesting);
+      it('deletes the ticker property from the countdown', function() {
+        assert(!c.hasOwnProperty('ticker'));
+      });
+      it('remembers where it started from', function() {
+        assert.equal(c.from, 5);
       });
     });
   });
