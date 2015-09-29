@@ -4,49 +4,8 @@ var Metronome = require('../').Metronome;
 
 describe('Metronome', function() {
 
-  describe('#fromBPM', function() {
-    var m = new Metronome();
-
-    context('when tempo is 30 bpm', function() {
-      it('one beat is 2000 milliseconds', function() {
-        assert.equal(m.fromBPM(30), 2000);
-      });
-    });
-    context('when tempo is 60 bpm', function() {
-      it('one beat is 1000 milliseconds', function() {
-        assert.equal(m.fromBPM(60), 1000);
-      });
-    });
-    context('when tempo is 120 bpm', function() {
-      it('one beat is 500 milliseconds', function() {
-        assert.equal(m.fromBPM(120), 500);
-      });
-    });
-  });
-
-  describe('#toBPM', function() {
-    var m = new Metronome();
-
-    context('when one beat is 2000 milliseconds', function() {
-      it('returns tempo of 30 bpm', function() {
-        assert.equal(m.toBPM(2000), 30);
-      });
-    });
-    context('when one beat is 1000 milliseconds', function() {
-      it('returns tempo of 60 bpm', function() {
-        assert.equal(m.toBPM(1000), 60);
-      });
-    });
-    context('when one beat is 500 milliseconds', function() {
-      it('returns tempo of 120 bpm', function() {
-        assert.equal(m.toBPM(500), 120);
-      });
-    });
-  });
-
-  describe('changing the tempo', function() {
-
-    context('setup: checking default settings', function() {
+  describe('initial settings', function() {
+    context('by default:', function() {
       var m = new Metronome();
       it('bpm is 60', function() {
         assert.equal(m.bpm, 60);
@@ -54,7 +13,61 @@ describe('Metronome', function() {
       it('one beat is set to 1000 ms', function() {
         assert.equal(m.ms, 1000);
       });
+      it('is not running', function() {
+        assert(!m.isActive());
+      });
     });
+    context('customizing settings', function() {
+      var m = new Metronome(100);
+      it('sets bpm to 100 at initialization', function() {
+        assert.equal(m.bpm, 100);
+      });
+      it('thereby, sets one beat to 600 ms', function() {
+        assert.equal(m.ms, 600);
+      });
+      it('is not running', function() {
+        assert(!m.isActive());
+      });
+    });
+  });
+
+  describe('.fromBPM', function() {
+    context('when tempo is 30 bpm', function() {
+      it('one beat is 2000 milliseconds', function() {
+        assert.equal(Metronome.fromBPM(30), 2000);
+      });
+    });
+    context('when tempo is 60 bpm', function() {
+      it('one beat is 1000 milliseconds', function() {
+        assert.equal(Metronome.fromBPM(60), 1000);
+      });
+    });
+    context('when tempo is 120 bpm', function() {
+      it('one beat is 500 milliseconds', function() {
+        assert.equal(Metronome.fromBPM(120), 500);
+      });
+    });
+  });
+
+  describe('.toBPM', function() {
+    context('when one beat is 2000 milliseconds', function() {
+      it('returns tempo of 30 bpm', function() {
+        assert.equal(Metronome.toBPM(2000), 30);
+      });
+    });
+    context('when one beat is 1000 milliseconds', function() {
+      it('returns tempo of 60 bpm', function() {
+        assert.equal(Metronome.toBPM(1000), 60);
+      });
+    });
+    context('when one beat is 500 milliseconds', function() {
+      it('returns tempo of 120 bpm', function() {
+        assert.equal(Metronome.toBPM(500), 120);
+      });
+    });
+  });
+
+  describe('changing the tempo', function() {
 
     context('states after a tempo change', function() {
       var m = new Metronome();
