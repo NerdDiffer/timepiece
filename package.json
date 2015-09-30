@@ -1,13 +1,12 @@
 {
   "name": "timepiece",
   "version": "0.0.0",
-  "description": "a clock, countdown timer, interval timer, stopwatch and metronome",
+  "description": "countdown timer, stopwatch and metronome",
   "main": "index.js",
   "scripts": {
     "test": "mocha ./spec/**/*_spec.js"
   },
   "keywords": [
-    "clock",
     "countdown",
     "interval",
     "timer",
