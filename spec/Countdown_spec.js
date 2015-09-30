@@ -56,18 +56,6 @@ describe('Countdown', function() {
         c.stop();
       });
     });
-    context('when timer is already running', function() {
-      var c = new Countdown();
-
-      it.skip('does nothing', function() {
-        // setup: verify timer is already running
-        c.start();
-        assert(c.isActive());
-        // TODO: is this worth testing?
-        // how do I test that nothing happens? with spies?
-        // should I emit an event if its passed over?
-      });
-    });
   });
 
   describe('#stop', function() {
@@ -85,13 +73,6 @@ describe('Countdown', function() {
       it('afterwards, sets a new value of the "from" property', function() {
         c.set(5);
         assert.equal(c.from, 5);
-      });
-    });
-    context('if timer is already running', function() {
-      it.skip('does nothing', function() {
-        // TODO: is this worth testing?
-        // how do I test that nothing happens? with spies?
-        // should I emit an event if its passed over?
       });
     });
   });

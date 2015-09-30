@@ -117,18 +117,15 @@ stopwatch.on('tick', function reportElapsedTime() {
 // Start the stopwatch. Emits a 'start' event.
 stopwatch.start();
 
-// Pause the stopwatch. Emits a 'stop' event.
-stopwatch.stop();
-
-// Resume the stopwatch from wherever you left off.
-stopwatch.start();
-
 // Split time, save to the `laps` array. Emits of 'split' event.
 // The stopwatch continues running.
 stopwatch.on('split', function showLaps() {
   console.log(stopwatch.laps);
 });
 stopwatch.split();
+
+// Stop the stopwatch. Emits a 'stop' event.
+stopwatch.stop();
 
 // Reset the timer back to 0 seconds. Does not start it again.
 stopwatch.reset();

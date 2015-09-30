@@ -22,11 +22,4 @@ module.exports.behaviorForStop = function(c, mtd) {
       assert.equal(c.from, 60);
     });
   });
-  context('when timer is not running', function() {
-    it.skip('does nothing', function() {
-      // TODO: is this worth testing?
-      // how do I test that nothing happens? with spies?
-      // should I emit an event if its passed over?
-    });
-  });
 };
