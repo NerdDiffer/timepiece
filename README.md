@@ -39,21 +39,29 @@ var Metronome = require('timepiece').Metronome;
 var metronome = new Metronome();
 // But you could also initialize one at another tempo.
 var allegro = new Metronome(144);
+```
 
-// It emits a 'tick' event on each beat
+A metronome object emits a `'tick'` event on each beat
+```javascript
 metronome.on('tick', function logBPM(){
   console.log(metronome.bpm + ' bpm');
 });
+```
 
-// Start metronome. Emits a 'start' event.
+Start metronome. Emits a `'start'` event.
+```javascript
 metronome.start();
+```
 
-// practice your instrument...
+Practice your instrument, make some music...
 
-// Change the tempo, immediately. Emits of a 'set' event.
+Change the tempo. Emits a `'set'` event.
+```javascript
 metronome.set(108);
+```
 
-// Stop metronome. Emits a 'stop' event.
+Stop metronome. Emits a `'stop'` event.
+```javascript
 metronome.stop();
 ```
 
@@ -66,37 +74,51 @@ var Countdown = require('timepiece').Countdown;
 var countdown = new Countdown();
 // But you could also count down from any other span, set by number of seconds.
 var countdownFrom90 = new Countdown(90); // a minute & thirty seconds
+```
 
-// It emits a 'tick' event, once per second.
+A Countdown object emits a `'tick'` event, once per second.
+```javascript
 countdown.on('tick', function reportTimeLeft() {
   console.log(countdown.remaining);
 });
+```
 
-// Start the timer. Emits a 'start' event.
+Start the timer. Emits a `'start'` event.
+```javascript
 countdown.on('start', function stopped() {
   console.log('starting timer at ' + countdown.from + ' seconds');
 });
 countdown.start();
+```
 
-// Pause the timer. Emits a 'stop' event
+Pause the timer. Emits a `'stop'` event
+```javascript
 countdown.on('stop', function stopped() {
   console.log('stopped timer with' + countdown.remaining + ' seconds left.');
 });
 countdown.pause(); // you could also call `#stop` for the same behavior.
+```
 
-// Resume the timer from wherever you left off
+Resume the timer from wherever you left off
+```javascript
 countdown.resume(); // you could also call `#start`
+```
 
-// Reset the timer to its original count down setting
-// NOTE: this does not start the timer again, you do this manually.
+Reset the timer to its original count down setting.  
+**NOTE**: this does not start the timer again, you do this manually.
+```javascript
 countdown.reset();
+```
 
-// Set the timer to count down from another value
-// NOTE: this method checks if the timer is active, before doing anything.
-// If the timer is already active, then nothing happens.
+Set the timer to count down from another value.  
+**NOTE**: this method checks if the timer is active, before doing anything.  
+If the timer is already active, then nothing happens.
+```javascript
 countdown.set(30);
+```
 
-// It emits a 'finish' event, when timer runs out.
+It emits a `'finish'` event when timer runs out.
+```javascript
 countdown.on('finish', function happy() {
   console.log('exciting stuff!');
 });
@@ -108,25 +130,35 @@ countdown.on('finish', function happy() {
 var Stopwatch = require('timepiece').Stopwatch;
 
 var stopwatch = new Stopwatch();
+```
 
-// It emits a 'tick' event, once per second.
+A Stopwatch object emits a `'tick'` event, once per second.
+```javascript
 stopwatch.on('tick', function reportElapsedTime() {
   console.log(stopwatch.elapsed + ' seconds');
 });
+```
 
-// Start the stopwatch. Emits a 'start' event.
+Start the stopwatch. Emits a `'start'` event.
+```javascript
 stopwatch.start();
+```
 
-// Split time, save to the `laps` array. Emits of 'split' event.
-// The stopwatch continues running.
+Split time, save to the `laps` array. Emits a `split'` event.  
+The stopwatch continues running.
+```javascript
 stopwatch.on('split', function showLaps() {
   console.log(stopwatch.laps);
 });
 stopwatch.split();
+```
 
-// Stop the stopwatch. Emits a 'stop' event.
+Stop the stopwatch. Emits a `'stop'` event.
+```javascript
 stopwatch.stop();
+```
 
-// Reset the timer back to 0 seconds. Does not start it again.
+Reset the timer back to 0 seconds. Does not start it again.
+```javascript
 stopwatch.reset();
 ```
